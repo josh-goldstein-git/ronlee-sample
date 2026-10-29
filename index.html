@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ronald D. Lee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --paper: #ffffff;
+    --ink: #1d2430;
+    --muted: #5d6675;
+    --rule: #e3e0d8;
+    --accent: #003262;      /* Berkeley blue */
+    --accent-2: #b8860b;    /* muted gold */
+    --link: #0b4f8a;
+    --card-hover: #f4f1ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14171c; --paper: #1b1f26; --ink: #e6e8ec; --muted: #a2a9b4;
+      --rule: #2d333d; --accent: #9cc3ef; --accent-2: #e0b84a; --link: #9cc3ef; --card-hover: #222831;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171c; --paper: #1b1f26; --ink: #e6e8ec; --muted: #a2a9b4;
+    --rule: #2d333d; --accent: #9cc3ef; --accent-2: #e0b84a; --link: #9cc3ef; --card-hover: #222831;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.6 "Source Serif 4", Georgia, serif;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  header.site { border-bottom: 3px solid var(--accent); background: var(--paper); }
+  header.site .wrap { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 14px; }
+  .name { font-size: 2rem; font-weight: 600; color: var(--accent); margin: 0; line-height: 1.1; letter-spacing: -0.01em; }
+  .name a { color: inherit; }
+  .name a:hover { text-decoration: none; }
+  .title { font: 600 0.78rem/1.4 "Source Sans 3", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  nav { font: 600 0.95rem "Source Sans 3", sans-serif; display: flex; gap: 20px; flex-wrap: wrap; }
+  nav a { color: var(--ink); padding-bottom: 2px; border-bottom: 2px solid transparent; }
+  nav a:hover, nav a.on { border-bottom-color: var(--accent-2); text-decoration: none; }
+
+  main { padding: 36px 0 56px; }
+  h2 { font-size: 1.5rem; font-weight: 600; margin: 0 0 12px; color: var(--accent); }
+  .lede { font-size: 1.08rem; margin: 0 0 28px; }
+
+  .areas { display: grid; gap: 14px; }
+  .area {
+    display: block; background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid var(--accent-2);
+    padding: 18px 22px; border-radius: 4px; color: var(--ink); transition: background .15s;
+  }
+  .area:hover { background: var(--card-hover); text-decoration: none; }
+  .area h3 { margin: 0 0 6px; font-size: 1.2rem; color: var(--accent); }
+  .area p { margin: 0 0 8px; }
+  .more { font: 600 0.9rem "Source Sans 3", sans-serif; color: var(--link); }
+
+  .crumb { font: 0.9rem "Source Sans 3", sans-serif; margin-bottom: 18px; }
+  .yr { font: 600 0.85rem "Source Sans 3", sans-serif; color: var(--muted); margin: 26px 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--rule); }
+  ul.pubs { list-style: none; padding: 0; margin: 0; }
+  ul.pubs li { padding: 7px 0 7px 1.4em; text-indent: -1.4em; }
+  .t { font-weight: 600; }
+  .v { font-style: italic; }
+  .filter { font: 0.95rem "Source Sans 3", sans-serif; width: 100%; padding: 9px 12px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); margin: 6px 0 4px; }
+  .count { font: 0.85rem "Source Sans 3", sans-serif; color: var(--muted); }
+
+  .sidebox { background: var(--paper); border: 1px solid var(--rule); padding: 16px 20px; border-radius: 4px; font-size: 0.95rem; margin-top: 30px; }
+  footer { border-top: 1px solid var(--rule); font: 0.85rem "Source Sans 3", sans-serif; color: var(--muted); padding: 18px 0 40px; }
+  @media print {
+    @page { margin: 0.6in 0.5in; }
+    body { background: #fff; font-size: 10pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .wrap { max-width: none; padding: 0; }
+    header.site .wrap { padding-top: 0; padding-bottom: 8px; }
+    nav, footer, .filter { display: none; }
+    main { padding: 14px 0 0; }
+    h2 { font-size: 14pt; margin-bottom: 6px; }
+    .lede { font-size: 10.5pt; margin-bottom: 12px; }
+    .areas { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .area { padding: 9px 12px; font-size: 8.6pt; line-height: 1.4; }
+    .area h3 { font-size: 10.5pt; margin-bottom: 3px; }
+    .area p { margin-bottom: 4px; }
+    .more { font-size: 8.5pt; }
+    .yr { margin: 14px 0 4px; }
+    ul.pubs li { padding: 3px 0 3px 1.4em; }
+    .pg { break-before: page; }
+    .area, ul.pubs li { break-inside: avoid; }
+    .yr { break-after: avoid; }
+    a.t { color: var(--ink); }
+  }
+  @media (max-width: 560px) { body { font-size: 16px; } .name { font-size: 1.6rem; } .wrap { padding: 0 16px; } }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div>
+      <h1 class="name"><a href="#/">Ronald D. Lee</a></h1>
+      <div class="title">Professor of the Graduate School · Demography and Economics · UC Berkeley</div>
+    </div>
+    <nav>
+      <a href="#/" data-nav="home">Research</a>
+      <a href="#/books" data-nav="books">Books &amp; Reports</a>
+      <a href="#/about" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main><div class="wrap" id="view"></div></main>
+
+<footer><div class="wrap">
+  Department of Demography, 2232 Piedmont Ave, University of California, Berkeley ·
+  <span id="draftnote">Draft mock-up. Publication lists drawn from CV of September 2015 plus a few later papers.</span>
+</div></footer>
+
+<script>
+const AREAS = [
+  { id: "transfers", name: "Intergenerational Transfers and the Generational Economy",
+    text: "Every society must move resources from the working ages to children and the elderly — through families, through governments, and through asset markets. Beginning with work with Shelley Lapkoff in the 1980s, I developed a formal framework for measuring these flows and showing how they interact with population age structure. With Andrew Mason I co-founded the National Transfer Accounts project, now a network of research teams in more than sixty countries that introduces age into national income accounts. This work underlies our analyses of the first and second demographic dividends, of whether low fertility is really a problem, and of how population aging reshapes saving, wealth, and economic growth." },
+  { id: "aging", name: "Population Aging, Public Finance, and Social Security",
+    text: "Population aging puts pressure on pensions, health care, and public budgets. I have studied how longer life and lower fertility affect Social Security and Medicare, how alternative pension designs share demographic risk across generations, and what the full lifetime fiscal impacts of immigrants and their descendants are. I co-chaired the National Academy of Sciences committee on the long-term macroeconomic effects of an aging U.S. population, whose reports examined the macroeconomy and the growing gap in life expectancy by income." },
+  { id: "forecasting", name: "Stochastic Population Forecasting",
+    text: "Conventional projections bracket the future with high, medium, and low scenarios that have no probabilistic meaning. With Shripad Tuljapurkar and others I developed methods for fully stochastic forecasts of fertility, mortality, and population, and for propagating that uncertainty into forecasts of public budgets and the Social Security trust fund — quantifying our ignorance rather than hiding it. These methods have since been adopted in official Social Security and budget forecasting." },
+  { id: "mortality", name: "Modeling and Forecasting Mortality",
+    text: "With Lawrence Carter I introduced in 1992 what has become known as the Lee–Carter method, which models the age pattern of death rates as driven by a single time-varying index that can be forecast with standard time-series methods. The approach is now widely used by statistical offices, actuaries, and the United Nations. Later work with Nan Li and others extended it to coherent forecasts for groups of populations, to populations with limited data, and to the rotation of age patterns of mortality decline. More recent work examines life expectancy reversals and the mortality of epidemics." },
+  { id: "biodemography", name: "Evolutionary Biodemography of Aging",
+    text: "Why do we age, and why do humans live so long after the end of reproduction? The classical evolutionary theory of senescence focuses on births. I argued that in social species, transfers from older to younger individuals also shape the force of selection, so that post-reproductive survival can have evolutionary value. With Cyrus Chu and other collaborators I have developed formal models of the co-evolution of transfers, longevity, menopause, and the U-shaped age pattern of mortality, and with Karen Kramer I have studied children's and elders' economic roles in Maya and other subsistence societies." },
+  { id: "history", name: "Historical Demography and Population Dynamics",
+    text: "My earliest research used econometric and time-series methods to study pre-industrial England: how fertility, mortality, and nuptiality responded to wages, prices, and weather, and whether populations were held near equilibrium by homeostatic Malthusian feedback. I developed inverse projection as a method for reconstructing vital rates from parish registers, and contributed to Wrigley and Schofield's Population History of England. Related work examined dynastic cycles in historic China and fertility decline in nineteenth-century Prussia, and the general theory of population cycles and regulation in humans and other animals." },
+  { id: "fertility", name: "Fertility, Population Cycles, and the Easterlin Hypothesis",
+    text: "Fluctuations in births produce echoes in the age structure that can, in turn, affect later fertility. In the 1970s I worked out the formal dynamics of such controlled populations — the echo, the boom, and the bust — and studied how relative cohort size and the Easterlin hypothesis bear on fertility forecasts. Other work modeled how target family size, contraception, and changing reproductive goals translate into aggregate period rates, and I co-led a National Academy of Sciences synthesis of the determinants of fertility in developing countries." },
+  { id: "development", name: "Population, Economic Development, and the Demographic Transition",
+    text: "How does population growth affect economic development, and how does development in turn drive the demographic transition? I have worked on dynamic syntheses of Malthus and Boserup, on induced technological progress, and on the externalities to childbearing that might justify fertility policy. I co-chaired the National Academy working group on population growth and economic development and have written widely on the demographic transition as three centuries of fundamental change, including its consequences for human capital and growth." },
+];
+
+// Publications: [area, year, authors, title, venue]
+const PUBS = [
+  // ---- later work (post-2015, not on 2015 CV) ----
+  ["mortality", 2024, "Joshua R. Goldstein and Ronald D. Lee", "Life Expectancy Reversals in Low Mortality Populations", "Population and Development Review"],
+  ["mortality", 2020, "Joshua R. Goldstein and Ronald D. Lee", "Demographic Perspectives on the Mortality of COVID-19 and Other Epidemics", "Proceedings of the National Academy of Sciences 117(36): 22035–22041"],
+
+  // ---- transfers / NTA ----
+  ["transfers", 2015, "Concepció Patxot, Ronald Lee, and Andrew Mason", "Introduction: Exploring the Generational Economy", "Journal of the Economics of Ageing, pp. 1–6"],
+  ["transfers", 2015, "Ronald Lee", "Population Aging and the Changing Economic Life Cycle: A Global Perspective", "In C. Torp (ed.), Challenges of Aging: Retirement, Pensions, and Intergenerational Justice. Palgrave"],
+  ["transfers", 2014, "Ronald Lee, Andrew Mason, et al.", "Is Low Fertility Really a Problem? Population Aging, Dependency, and Consumption", "Science 346: 229–234"],
+  ["transfers", 2014, "Ronald Lee and Andrew Mason", "National Transfer Accounts: An Overview", "Policy in Focus 30: 4–5"],
+  ["transfers", 2013, "Andrew Mason and Ronald Lee", "Labor and Consumption across the Lifecycle", "Journal of the Economics of Ageing 1(1)"],
+  ["transfers", 2013, "Ronald Lee and Andrew Mason", "Reformulating the Support Ratio to Reflect Asset Income and Transfers", "Paper presented at the Population Association of America, New Orleans"],
+  ["transfers", 2012, "Ronald Lee and Andrew Mason", "Population Aging, Intergenerational Transfers, and Economic Growth: Asia in a Global Context", "In J.P. Smith and M. Majmundar (eds.), Aging in Asia. National Academies Press"],
+  ["transfers", 2011, "Andrew Mason and Ronald Lee", "Population Aging and the Generational Economy: Key Findings", "In R. Lee and A. Mason (eds.), Population Aging and the Generational Economy. Edward Elgar"],
+  ["transfers", 2011, "Ronald Lee and Andrew Mason", "Theoretical Aspects of National Transfer Accounts", "In R. Lee and A. Mason (eds.), Population Aging and the Generational Economy. Edward Elgar"],
+  ["transfers", 2011, "Andrew Mason and Ronald Lee", "Introducing Age into National Accounts", "In R. Lee and A. Mason (eds.), Population Aging and the Generational Economy. Edward Elgar"],
+  ["transfers", 2011, "Ronald Lee and Andrew Mason", "Lifecycles, Support Systems, and Generational Flows: Patterns and Change", "In R. Lee and A. Mason (eds.), Population Aging and the Generational Economy. Edward Elgar"],
+  ["transfers", 2011, "Ronald Lee and Gretchen Donehower", "Private Transfers in Comparative Perspective", "In R. Lee and A. Mason (eds.), Population Aging and the Generational Economy. Edward Elgar"],
+  ["transfers", 2011, "Ronald Lee, Gretchen Donehower, and Timothy Miller", "The Changing Shape of the Economic Lifecycle in the United States, 1970 to 2003", "In R. Lee and A. Mason (eds.), Population Aging and the Generational Economy. Edward Elgar"],
+  ["transfers", 2011, "Ronald Lee and Andrew Mason", "Generational Economics in a Changing World", "Population and Development Review 37(Suppl.): 115–142"],
+  ["transfers", 2011, "Ronald Lee and Andrew Mason", "The Price of Maturity: Aging Populations Mean Countries Have to Find New Ways to Support Their Elderly", "Finance & Development 48(2): 6–11"],
+  ["transfers", 2011, "Ronald Lee and Gretchen Donehower", "Population Ageing, Intergenerational Transfers, and Economic Growth", "In Population Ageing, Intergenerational Transfers and Social Protection in Latin America and the Caribbean. ECLAC"],
+  ["transfers", 2010, "Ronald Lee and Andrew Mason", "Some Macroeconomic Aspects of Global Population Aging", "Demography 47(Suppl.): S151–S172"],
+  ["transfers", 2010, "Andrew Mason, Ronald Lee, and Sang-Hyop Lee", "Population Dynamics: Social Security, Markets, and Families", "International Social Security Review 63(3–4): 145–175"],
+  ["transfers", 2009, "Andrew Mason, Ronald Lee, An-Chi Tung, Mun Sim Lai, and Tim Miller", "Population Aging and Intergenerational Transfers: Introducing Age into National Income Accounts", "In D. Wise (ed.), Developments in the Economics of Aging. University of Chicago Press, pp. 89–122"],
+  ["transfers", 2008, "Ronald Lee, Sang-Hyop Lee, and Andrew Mason", "Charting the Economic Life Cycle", "Population and Development Review 34(Suppl.): 208–237"],
+  ["transfers", 2007, "Andrew Mason and Ronald Lee", "Transfers, Capital, and Consumption over the Demographic Transition", "In R. Clark, N. Ogawa, and A. Mason (eds.), Population Aging, Intergenerational Transfers and the Macroeconomy. Edward Elgar, pp. 128–162"],
+  ["transfers", 2007, "Ronald Lee", "Demographic Change, Welfare, and Intergenerational Transfers: A Global Overview", "In J. Véron, S. Pennec, and J. Légaré (eds.), Ages, Generations and the Social Contract. Springer, pp. 17–43"],
+  ["transfers", 2006, "Ronald Lee and Andrew Mason", "What Is the Demographic Dividend?", "Finance and Development (September): 16–17"],
+  ["transfers", 2006, "Andrew Mason and Ronald Lee", "Reform and Support Systems for the Elderly in Developing Countries: Capturing the Second Demographic Dividend", "Genus LXII(2): 11–35"],
+  ["transfers", 2003, "Ronald Lee, Andrew Mason, and Timothy Miller", "Saving, Wealth, and the Transition from Transfers to Individual Responsibility: The Cases of Taiwan and the United States", "Scandinavian Journal of Economics 105(3): 339–357"],
+  ["transfers", 2003, "Antoine Bommier and Ronald Lee", "Overlapping Generations Models with Realistic Demography", "Journal of Population Economics 16(1): 135–160"],
+  ["transfers", 2003, "Ronald Lee and Joshua R. Goldstein", "Rescaling the Life Cycle: Longevity and Proportionality", "Population and Development Review 29(Suppl.): 183–207"],
+  ["transfers", 2002, "Ronald Lee, Andrew Mason, and Timothy Miller", "Saving, Wealth, and the Demographic Transition in East Asia", "In A. Mason (ed.), Population Change and Economic Development in East Asia. Stanford University Press, pp. 155–184"],
+  ["transfers", 2001, "Ronald Lee, Andrew Mason, and Timothy Miller", "Saving, Wealth, and Population", "In N. Birdsall, A. Kelley, and S. Sinding (eds.), Population Matters. Oxford University Press, pp. 137–164"],
+  ["transfers", 2000, "Ronald Lee", "A Cross-Cultural Perspective on Intergenerational Transfers and the Economic Life Cycle", "In A. Mason and G. Tapinos (eds.), Sharing the Wealth. Oxford University Press, pp. 17–56"],
+  ["transfers", 2000, "Ronald Lee, Andrew Mason, and Timothy Miller", "Life Cycle Saving and the Demographic Transition: The Case of Taiwan", "Population and Development Review 26(Suppl.): 194–222"],
+  ["transfers", 1994, "Ronald Lee", "Population Age Structure, Intergenerational Transfers, and Wealth: A New Approach, with Applications to the U.S.", "Journal of Human Resources 29(4): 1027–1063"],
+  ["transfers", 1994, "Ronald Lee", "The Formal Demography of Population Aging, Transfers, and the Economic Life Cycle", "In L. Martin and S. Preston (eds.), Demography of Aging. National Academy Press, pp. 8–49"],
+  ["transfers", 1994, "Ronald Lee", "Fertility, Mortality and Intergenerational Transfers: Comparisons Across Steady States", "In J. Ermisch and N. Ogawa (eds.), The Family, the Market and the State in Ageing Societies. Oxford University Press, pp. 135–157"],
+  ["transfers", 1988, "Ronald Lee and Shelley Lapkoff", "Intergenerational Flows of Time and Goods: Consequences of Slowing Population Growth", "Journal of Political Economy 96(3): 618–651"],
+  ["transfers", 1980, "Ronald Lee", "Age Structure, Intergenerational Transfers and Economic Growth: An Overview", "Revue Économique 31(6): 1129–1156"],
+
+  // ---- aging & public finance ----
+  ["aging", 2015, "Ronald Lee", "How Population Aging Affects the Macroeconomy", "In Re-Evaluating Labor Market Dynamics. Federal Reserve Bank of Kansas City, pp. 261–283"],
+  ["aging", 2014, "Joshua R. Goldstein and Ronald D. Lee", "How Large Are the Effects of Population Aging on Economic Inequality?", "Vienna Yearbook of Population Research 12: 193–209"],
+  ["aging", 2014, "Ronald Lee", "Macroeconomic Consequences of Population Aging in the United States: Overview of a National Academy Report", "American Economic Review: Papers and Proceedings 104(5): 234–239"],
+  ["aging", 2013, "Alan Auerbach, Lorenz Kueng, and Ronald Lee", "Propagation and Smoothing of Shocks in Alternative Social Security Systems", "NBER Working Paper 19137"],
+  ["aging", 2012, "Ronald Lee", "Macroeconomic Implications of Demographic Changes: A Global Perspective", "Bank of Japan Discussion Paper 2012-E-11"],
+  ["aging", 2011, "Alan Auerbach and Ronald Lee", "Welfare and Generational Equity in Sustainable Unfunded Pension Systems", "Journal of Public Economics 95(1–2): 16–27"],
+  ["aging", 2011, "Douglas A. Wolf, Ronald D. Lee, Timothy Miller, Gretchen Donehower, and Alexandre Genest", "Fiscal Externalities of Becoming a Parent", "Population and Development Review 37(2): 241–266"],
+  ["aging", 2010, "Antoine Bommier, Ronald Lee, Timothy Miller, and Stéphane Zuber", "Who Wins and Who Loses? Public Transfer Accounts for US Generations Born 1850–2090", "Population and Development Review 36(1): 1–26"],
+  ["aging", 2009, "Alan J. Auerbach and Ronald D. Lee", "Notional Defined Contribution Pension Systems in a Stochastic Context: Design and Stability", "In J. Brown, J. Liebman, and D. Wise (eds.), Social Security Policy in a Changing Environment. University of Chicago Press"],
+  ["aging", 2007, "Ronald Lee", "Global Population Aging and Its Economic Consequences", "Washington, DC: AEI Press"],
+  ["aging", 2003, "Ronald Lee and Hisashi Yamagata", "Sustainable Social Security: What Would It Cost?", "National Tax Journal 56(1): 27–43"],
+  ["aging", 2002, "Ronald Lee and Timothy Miller", "An Approach to Forecasting Health Expenditures, with Application to the US Medicare System", "Health Services Research 37(5): 1365–1386"],
+  ["aging", 2002, "Ronald Lee and Ryan Edwards", "The Fiscal Effects of Population Aging in the US: Assessing the Uncertainties", "Tax Policy and the Economy 16: 141–181"],
+  ["aging", 2002, "Ronald Lee and John Haaga", "Government Spending in an Older America", "Reports on America 3(1), Population Reference Bureau"],
+  ["aging", 2001, "Ronald Lee and Ryan Edwards", "The Fiscal Impact of Population Change", "In J.S. Little and R.K. Triest (eds.), Seismic Shifts. Federal Reserve Bank of Boston, pp. 220–237"],
+  ["aging", 2000, "Ronald Lee and Timothy Miller", "Immigration, Social Security, and Broader Fiscal Impacts", "American Economic Review: Papers and Proceedings 90(2): 350–354"],
+  ["aging", 2000, "Ronald Lee", "Long-Term Projections and the US Social Security System", "Population and Development Review 26(1): 137–143"],
+  ["aging", 1999, "Ronald Lee and Jonathan Skinner", "Will Aging Baby Boomers Bust the Federal Budget?", "Journal of Economic Perspectives 13(1): 117–140"],
+  ["aging", 1998, "Ronald Lee and Timothy Miller", "The Current Fiscal Impact of Immigrants: Beyond the Immigrant Household", "In J. Smith and B. Edmonston (eds.), The Immigration Debate. National Academy Press, pp. 183–205"],
+  ["aging", 1997, "Ronald Lee and Timothy Miller", "The Lifetime Fiscal Impacts of Immigrants and Their Descendants", "Chapter 7 in The New Americans. National Academy Press, pp. 297–362"],
+  ["aging", 1997, "Ronald Lee and Shripad Tuljapurkar", "Death and Taxes: How Longer Life Will Affect Social Security", "Demography 34(1): 67–82"],
+  ["aging", 1996, "Ronald Lee and Jonathan Skinner", "Assessing Forecasts of Mortality, Health Status, and Health Costs During Baby-Boomers' Retirement", "In C. Citro (ed.), Assessing Knowledge of Retirement Behavior. National Academy Press, pp. 195–243"],
+
+  // ---- stochastic forecasting ----
+  ["forecasting", 2010, "Ronald Lee, Shripad Tuljapurkar, and Ryan Edwards", "Uncertain Demographic Futures and Government Budgets in the U.S.", "In S. Tuljapurkar, N. Ogawa, and A. Gauthier (eds.), Ageing in Advanced Industrial States. Springer, pp. 79–100"],
+  ["forecasting", 2005, "Ronald Lee and Michael Anderson", "Stochastic Infinite Horizon Forecasts for US Social Security Finances", "National Institute Economic Review 194: 4–15"],
+  ["forecasting", 2004, "Ronald Lee", "Quantifying Our Ignorance: Stochastic Forecasts of Population and Public Budgets", "Population and Development Review 30(Suppl.): 153–176"],
+  ["forecasting", 2004, "Shripad Tuljapurkar, Ronald Lee, and Qi Li", "Random Scenario Forecasts versus Stochastic Forecasts", "International Statistical Review 72(2): 185–199"],
+  ["forecasting", 2000, "Ronald Lee and Shripad Tuljapurkar", "Population Forecasting for Fiscal Planning: Issues and Innovations", "In A. Auerbach and R. Lee (eds.), Demographic Change and Fiscal Policy. Cambridge University Press"],
+  ["forecasting", 2000, "Shripad Tuljapurkar and Ronald Lee", "Demographic Uncertainty and the OASDI Fund", "In A. Mason and G. Tapinos (eds.), Sharing the Wealth. Oxford University Press"],
+  ["forecasting", 2000, "Ronald Lee (principal drafter)", "The Uncertainty of Population Forecasts", "Chapter 7 in Beyond Six Billion. National Academy Press, pp. 188–217"],
+  ["forecasting", 1999, "Ronald Lee", "Probabilistic Approaches to Population Forecasting", "Population and Development Review 24(Suppl.): 156–190"],
+  ["forecasting", 1998, "Ronald Lee and Shripad Tuljapurkar", "Stochastic Forecasts for Social Security", "In D. Wise (ed.), Frontiers in the Economics of Aging. University of Chicago Press, pp. 393–420"],
+  ["forecasting", 1998, "Ronald Lee and Shripad Tuljapurkar", "Uncertain Demographic Futures and Social Security Finances", "American Economic Review: Papers and Proceedings 88(2): 237–241"],
+  ["forecasting", 1997, "Shripad Tuljapurkar and Ronald Lee", "Demographic Uncertainty and the Stable Equivalent Population", "Mathematical and Computer Modelling 26(6): 39–56"],
+  ["forecasting", 1995, "Ronald Lee, Lawrence Carter, and Shripad Tuljapurkar", "Disaggregation in Population Forecasting: Do We Need It? And How to Do It Simply", "Mathematical Population Studies 5(3): 217–234"],
+  ["forecasting", 1994, "Ronald Lee and Shripad Tuljapurkar", "Stochastic Population Projections for the U.S.: Beyond High, Medium and Low", "Journal of the American Statistical Association 89(428): 1175–1189"],
+  ["forecasting", 1993, "Ronald Lee", "Modeling and Forecasting the Time Series of US Fertility: Age Patterns, Range, and Ultimate Level", "International Journal of Forecasting 9: 187–202"],
+  ["forecasting", 1992, "Ronald Lee", "Stochastic Demographic Forecasting", "International Journal of Forecasting 8(3): 315–328"],
+  ["forecasting", 1990, "Ronald Lee", "Long-Run Global Population Forecasts: A Critical Appraisal", "Population and Development Review 16(Suppl.): 44–71"],
+  ["forecasting", 1986, "Lawrence Carter and Ronald Lee", "Joint Forecasts of U.S. Marital Fertility, Nuptiality, Births and Marriages Using Time Series Models", "Journal of the American Statistical Association"],
+  ["forecasting", 1974, "Ronald Lee", "Forecasting Births in Post-Transition Populations: Stochastic Renewal with Serially Correlated Fertility", "Journal of the American Statistical Association 69(347): 607–617"],
+
+  // ---- mortality ----
+  ["mortality", 2013, "Nan Li, Ronald Lee, and Patrick Gerland", "Extending the Lee-Carter Method to Model the Rotation of Age Patterns of Mortality Decline for Long-Term Projections", "Demography 50(6): 2037–2051"],
+  ["mortality", 2006, "Ronald Lee", "Mortality Forecasts and Linear Life Expectancy Trends", "In T. Bengtsson (ed.), Perspectives on Mortality Forecasting III. Swedish Social Insurance Agency, pp. 19–39"],
+  ["mortality", 2005, "Nan Li and Ronald Lee", "Coherent Mortality Forecasts for a Group of Populations: An Extension of the Lee-Carter Method", "Demography 42(3): 575–594"],
+  ["mortality", 2004, "Nan Li, Ronald Lee, and Shripad Tuljapurkar", "Using the Lee-Carter Method to Forecast Mortality for Populations with Limited Data", "International Statistical Review 72(1): 19–36"],
+  ["mortality", 2001, "Ronald Lee and Timothy Miller", "Evaluating the Performance of the Lee-Carter Method for Forecasting Mortality", "Demography 38(4): 537–549"],
+  ["mortality", 2001, "Ronald Lee", "Predicting Human Longevity", "Science 292: 1654–1655 (letter)"],
+  ["mortality", 2000, "Ronald Lee", "The Lee-Carter Method for Forecasting Mortality, with Various Extensions and Applications", "North American Actuarial Journal 4(1): 80–93"],
+  ["mortality", 1994, "Ronald Lee and Rafael Rofman", "Modelación y Proyección de la Mortalidad en Chile", "Notas de Población 22(59): 183–213"],
+  ["mortality", 1992, "Ronald Lee and Lawrence Carter", "Modeling and Forecasting U.S. Mortality", "Journal of the American Statistical Association 87(419): 659–671"],
+  ["mortality", 1992, "Lawrence Carter and Ronald Lee", "Modeling and Forecasting U.S. Mortality: Differentials in Life Expectancy by Sex", "International Journal of Forecasting 8(3): 393–412"],
+  ["mortality", 1992, "Ronald Lee", "Modeling and Forecasting Canadian Mortality: An Application of the Lee-Carter Approach, with Extensions", "Report to Statistics Canada"],
+
+  // ---- biodemography ----
+  ["biodemography", 2014, "Ronald Lee", "Intergenerational Transfers, Social Arrangements, Life Histories, and the Elderly", "In M. Weinstein and M.A. Lane (eds.), Sociality, Hierarchy, Health: Comparative Biodemography. National Academies Press"],
+  ["biodemography", 2013, "C.Y. Cyrus Chu and Ronald D. Lee", "On the Evolution of Intergenerational Division of Labor, Menopause and Transfers among Adults and Offspring", "Journal of Theoretical Biology 332: 171–180"],
+  ["biodemography", 2012, "Ronald D. Lee and C.Y. Cyrus Chu", "The Evolution of Transfers and Life Histories", "Experimental Gerontology 47(10): 803–806"],
+  ["biodemography", 2012, "C.Y. Cyrus Chu and Ronald D. Lee", "Sexual Dimorphism and Sexual Selection: A Unified Economic Analysis", "Theoretical Population Biology 82(4): 355–363"],
+  ["biodemography", 2012, "Ronald Lee", "Intergenerational Transfers, the Biological Life Cycle, and Human Society", "Population and Development Review 38(Suppl.): 23–35"],
+  ["biodemography", 2010, "C.Y. Cyrus Chu, Hung-Ken Chien, and Ronald Lee", "The Evolutionary Theory of Time Preferences and Intergenerational Transfers", "Journal of Economic Behavior and Organization 76(3): 451–464"],
+  ["biodemography", 2010, "Ronald Lee", "Population Aging and the Economic Role of the Elderly: Bonanza or Burden?", "Behavioral and Brain Sciences 33(1): 31–32 (commentary)"],
+  ["biodemography", 2008, "Ronald Lee", "Sociality, Selection, and Survival: Simulated Evolution of Mortality with Intergenerational Transfers and Food Sharing", "Proceedings of the National Academy of Sciences 105(20): 7124–7128"],
+  ["biodemography", 2008, "C.Y. Cyrus Chu, Hung-Ken Chien, and Ronald D. Lee", "Explaining the Optimality of U-Shaped Age-Specific Mortality", "Theoretical Population Biology 73(2): 171–180"],
+  ["biodemography", 2008, "Rachel Sullivan Robinson, Ronald Lee, and Karen Kramer", "Counting Women's Labour: A Reanalysis of Children's Net Production Using Cain's Data from a Bangladeshi Village", "Population Studies 62(1): 25–38"],
+  ["biodemography", 2006, "C.Y. Cyrus Chu and Ronald Lee", "The Co-Evolution of Intergenerational Transfers and Longevity: An Optimal Life History Approach", "Theoretical Population Biology 69(2): 193–201"],
+  ["biodemography", 2003, "Ronald Lee", "Rethinking the Evolutionary Theory of Aging: Transfers, Not Births, Shape Senescence in Social Species", "Proceedings of the National Academy of Sciences 100(16): 9637–9642"],
+  ["biodemography", 2002, "Ronald Lee and Karen Kramer", "Children's Economic Roles in the Maya Family Life Cycle: Cain, Caldwell, and Chayanov Revisited", "Population and Development Review 28(3): 475–499"],
+  ["biodemography", 1997, "Ronald Lee", "Intergenerational Relations and the Elderly", "In K. Wachter and C. Finch (eds.), Between Zeus and the Salmon. National Academy Press, pp. 212–233"],
+  ["biodemography", 1987, "Ronald Lee", "Population Dynamics of Humans and Other Animals", "Demography 24(4): 443–465 (PAA Presidential Address)"],
+
+  // ---- history ----
+  ["history", 2002, "Ronald Lee and Michael Anderson", "Malthus in State Space: Macro Economic-Demographic Relations in English History, 1540 to 1870", "Journal of Population Economics 15(2): 195–220"],
+  ["history", 2006, "Ronald Lee and Richard H. Steckel", "Life under Pressure: An Appreciation and Appraisal", "Historical Methods 39(4): 171–176"],
+  ["history", 2004, "Ronald Lee", "Reflections on Inverse Projection: Its Origins, Development, Extensions, and Relation to Forecasting", "In E. Barbi et al. (eds.), Inverse Projection Techniques. Springer, pp. 1–9"],
+  ["history", 1998, "Patrick Galloway, Ronald Lee, and Eugene Hammel", "Urban versus Rural: Fertility Decline in the Cities and Rural Districts of Prussia, 1875 to 1910", "European Journal of Population 14: 209–264"],
+  ["history", 1998, "Patrick Galloway, Ronald Lee, and E.A. Hammel", "Infant Mortality and the Fertility Transition: Macro Evidence from Europe and New Findings from Prussia", "In B. Cohen and M. Montgomery (eds.), From Death to Birth. National Academy Press, pp. 182–226"],
+  ["history", 1994, "Ronald Lee, Patrick Galloway, and Eugene A. Hammel", "Fertility Decline in Prussia: Estimating Influences on Supply, Demand, and Degree of Control", "Demography 31(2): 347–373"],
+  ["history", 1994, "Patrick R. Galloway, Eugene A. Hammel, and Ronald Lee", "Fertility Decline in Prussia, 1875–1910: A Pooled Cross-Section Time Series Analysis", "Population Studies 48(1): 135–158"],
+  ["history", 1994, "C.Y. Cyrus Chu and Ronald Lee", "Famine, Revolt, and the Dynastic Cycle: Population Dynamics in Historic China", "Journal of Population Economics 7(4): 351–378"],
+  ["history", 1993, "Ronald Lee", "Accidental and Systematic Change in Population History: Homeostasis in a Stochastic Setting", "Explorations in Economic History 30(1): 1–30"],
+  ["history", 1993, "Ronald Lee", "Inverse Projection and Demographic Fluctuations: A Critical Assessment of New Methods", "In D. Reher and R. Schofield (eds.), Old and New Methods in Historical Demography. Oxford University Press, pp. 7–28"],
+  ["history", 1990, "Ronald Lee", "The Demographic Response to Economic Crisis in Historical and Contemporary Populations", "Population Bulletin of the United Nations 20: 1–15"],
+  ["history", 1985, "Ronald Lee", "Population Homeostasis and English Demographic History", "Journal of Interdisciplinary History 15(4): 635–660"],
+  ["history", 1985, "Ronald Lee", "Inverse Projection and Back Projection: Comparative Results and Sensitivity Tests for England", "Population Studies 39(2): 233–248"],
+  ["history", 1983, "Ronald Lee and David Lam", "Age Distribution Adjustments for English Censuses, 1821 to 1931", "Population Studies 37(3): 445–464"],
+  ["history", 1981, "Ronald Lee", "Short-Term Variation: Vital Rates, Prices, and Weather", "Chapter 9 in E.A. Wrigley and R.S. Schofield, The Population History of England 1541–1871. Edward Arnold / Harvard University Press"],
+  ["history", 1981, "Ronald Lee and Roger Schofield", "British Population in the Eighteenth Century", "In R. Floud and D. McCloskey (eds.), The Economic History of Britain since 1700. Cambridge University Press, pp. 17–35"],
+  ["history", 1980, "Ronald Lee", "A Historical Perspective on Economic Aspects of the Population Explosion: The Case of Preindustrial England", "In R. Easterlin (ed.), Population and Economic Change in Developing Countries. University of Chicago Press, pp. 517–557"],
+  ["history", 1978, "Ronald Lee", "Models of Preindustrial Population Dynamics, with Applications to England", "In C. Tilly (ed.), Historical Studies of Changing Fertility. Princeton University Press, pp. 155–207"],
+  ["history", 1977, "Ronald Lee", "Methods and Models for Analyzing Historical Series of Births, Deaths and Marriages", "In R. Lee (ed.), Population Patterns in the Past. Academic Press, pp. 337–370"],
+  ["history", 1975, "Ronald Lee", "Natural Fertility, Population Cycles, and the Spectral Analysis of Births and Marriages", "Journal of the American Statistical Association 70(350): 295–304"],
+  ["history", 1974, "Ronald Lee", "Estimating Series of Vital Rates and Age Structures from Baptisms and Burials: A New Technique, with Applications to Pre-industrial England", "Population Studies 28(3): 495–512"],
+  ["history", 1973, "Ronald Lee", "Population in Preindustrial England: An Econometric Analysis", "Quarterly Journal of Economics 87(4): 581–607"],
+
+  // ---- fertility ----
+  ["fertility", 1997, "Ronald Lee", "Population Dynamics: Equilibrium, Disequilibrium, and Consequences of Fluctuations", "In M. Rosenzweig and O. Stark (eds.), Handbook of Population and Family Economics, vol. 1B. North-Holland, pp. 1063–1115"],
+  ["fertility", 1996, "Ronald Lee and John Casterline", "Introduction", "In Fertility in the United States: New Patterns, New Theories. Population and Development Review 22(Suppl.): 1–18"],
+  ["fertility", 1994, "Ronald Lee", "The Role of Fertility in Maintaining Population Equilibrium", "Annals of the New York Academy of Sciences 709: 396–407"],
+  ["fertility", 1989, "Kenneth W. Wachter and Ronald Lee", "U.S. Births and Limit Cycle Models", "Demography 26(1): 99–115"],
+  ["fertility", 1983, "Rodolfo Bulatao and Ronald Lee", "An Overview of Fertility Determinants in Developing Countries", "In R. Bulatao and R. Lee (eds.), Determinants of Fertility in Developing Countries, vol. 2. Academic Press, pp. 757–787"],
+  ["fertility", 1983, "Ronald Lee and Rodolfo Bulatao", "The Demand for Children: A Critical Essay", "In R. Bulatao and R. Lee (eds.), Determinants of Fertility in Developing Countries, vol. 1. Academic Press, pp. 233–287"],
+  ["fertility", 1981, "Ronald Lee", "A Stock Adjustment Model of U.S. Marital Fertility, 1947–1974", "Research in Population Economics 3"],
+  ["fertility", 1981, "Ronald Lee", "Models for Forecasting Fertility from Birth Expectations Data", "In G. Hendershot and P. Placek (eds.), Predicting Fertility. Lexington Books"],
+  ["fertility", 1980, "Ronald Lee", "Aiming at a Moving Target: Period Fertility and Changing Reproductive Goals", "Population Studies 34(2): 205–226"],
+  ["fertility", 1979, "Ronald Lee", "Causes and Consequences of Age Structure Fluctuations: The Easterlin Hypothesis", "In Economic and Demographic Change: Issues for the 1980s, vol. 1. IUSSP, pp. 405–418"],
+  ["fertility", 1978, "Ronald Lee", "New Methods for Forecasting Fertility: An Overview", "Population Bulletin of the United Nations 11: 6–11"],
+  ["fertility", 1977, "Ronald Lee", "Target Fertility, Contraception, and Aggregate Rates: Toward a Formal Synthesis", "Demography 14(4): 455–479"],
+  ["fertility", 1976, "Ronald Lee", "Demographic Forecasting and the Easterlin Hypothesis", "Population and Development Review 2(3/4): 459–468"],
+  ["fertility", 1974, "Ronald Lee", "The Formal Dynamics of Controlled Populations and the Echo, the Boom and the Bust", "Demography 11(4): 563–585"],
+
+  // ---- development & demographic transition ----
+  ["development", 2015, "Ronald Lee", "Becker and the Demographic Transition", "Journal of Demographic Economics 81(1): 67–74"],
+  ["development", 2011, "Ronald Lee", "The Outlook for Population Growth", "Science 333(6042): 569–573"],
+  ["development", 2011, "Ronald D. Lee and David S. Reher", "Introduction: The Landscape of Demographic Transition and Its Aftermath", "Population and Development Review 37(Suppl.): 1–7"],
+  ["development", 2011, "Andrew Mason, Sang-Hyop Lee, and Ronald Lee", "Will Demographic Change Undermine Asia's Growth Prospects?", "In Emerging Asian Regionalism. Asian Development Bank"],
+  ["development", 2010, "Ronald Lee and Andrew Mason", "Fertility, Human Capital, and Economic Growth over the Demographic Transition", "European Journal of Population 26(2): 159–182"],
+  ["development", 2010, "Andrew Mason, Ronald Lee, and Sang-Hyop Lee", "The Demographic Transition and Economic Growth in the Pacific Rim", "In T. Ito and A. Rose (eds.), The Economic Consequences of Demographic Change in East Asia. University of Chicago Press, pp. 19–60"],
+  ["development", 2008, "Ronald D. Lee", "Demographic Transition", "In S.N. Durlauf and L.E. Blume (eds.), The New Palgrave Dictionary of Economics, 2nd ed."],
+  ["development", 2003, "Ronald Lee", "The Demographic Transition: Three Centuries of Fundamental Change", "Journal of Economic Perspectives 17(4): 167–190"],
+  ["development", 2003, "Jie Zhang, Junsen Zhang, and Ronald Lee", "Rising Longevity, Education, Savings, and Growth", "Journal of Development Economics 70: 83–101"],
+  ["development", 2001, "Jie Zhang, Junsen Zhang, and Ronald Lee", "Mortality Decline and Long-Run Economic Growth", "Journal of Public Economics 80(3): 485–507"],
+  ["development", 2001, "Ronald Lee", "Externalities to Childbearing", "In N. Smelser and P. Baltes (eds.), International Encyclopedia of the Social and Behavioral Sciences, vol. 3, pp. 1686–1689"],
+  ["development", 1992, "Ronald Lee", "Croissance démographique, progrès et pauvreté", "Population 47(6): 1533–1554"],
+  ["development", 1991, "Ronald Lee", "Evaluating Externalities to Childbearing in Developing Countries: The Case of India", "In Consequences of Rapid Population Growth in Developing Countries. Taylor and Francis, pp. 297–342"],
+  ["development", 1990, "Ronald Lee and Timothy Miller", "Population Growth, Externalities to Childbearing, and Fertility Policy in Developing Countries", "Proceedings of the World Bank Annual Conference on Development Economics 1990, pp. 275–304"],
+  ["development", 1990, "Ronald Lee", "Population Policy and Externalities to Childbearing", "Annals of the American Academy of Political and Social Science 510: 17–32"],
+  ["development", 1990, "Ronald Lee", "Comment: The Second Tragedy of the Commons", "Population and Development Review 16(Suppl.): 315–322"],
+  ["development", 1988, "Ronald Lee", "Induced Population Growth and Induced Technological Progress: Their Interaction in the Accelerating Stage", "Mathematical Population Studies 1(3): 265–288"],
+  ["development", 1986, "Ronald Lee", "Malthus and Boserup: A Dynamic Synthesis", "In D. Coleman and R. Schofield (eds.), The State of Population Theory. Basil Blackwell, pp. 96–130"],
+  ["development", 1982, "Ronald Lee", "Current Issues in Economic Demography: An Overview", "In R. Schoen and D. Landman (eds.), Population: Theory and Policy. University of Illinois Press, pp. 21–41"],
+];
+
+const BOOKS = [
+  [2015, "Committee on the Long-Run Macroeconomic Effects of the Aging U.S. Population (R. Lee, co-chair)", "The Growing Gap in Life Expectancy by Income: Implications for Federal Programs and Policy Responses", "National Academies Press"],
+  [2012, "Committee on the Long-Run Macroeconomic Effects of the Aging U.S. Population (R. Lee, co-chair)", "Aging and the Macroeconomy: Long-Term Implications of an Older Population", "National Academies Press"],
+  [2011, "Ronald Lee and Andrew Mason (eds.)", "Population Aging and the Generational Economy: A Global Perspective", "Edward Elgar"],
+  [2011, "Ronald Lee and David Reher (eds.)", "Demographic Transition and Its Consequences", "Population and Development Review 37 (Supplement)"],
+  [2003, "Ronald Lee, Timothy Miller, and Ryan Edwards", "The Growth and Aging of California's Population: Demographic and Fiscal Projections, Characteristics, and Service Needs", "California Policy Research Center"],
+  [2000, "Cyrus Chu and Ronald Lee (eds.)", "Population and Economic Change in East Asia", "Population and Development Review 26 (Supplement)"],
+  [2000, "Alan Auerbach and Ronald Lee (eds.)", "Demographic Change and Fiscal Policy", "Cambridge University Press"],
+  [1996, "John Casterline, Ronald Lee, and Karen Foote (eds.)", "Fertility in the United States: New Patterns, New Theories", "Population and Development Review 22 (Supplement)"],
+  [1988, "Ronald Lee, W. Brian Arthur, Allen Kelley, Gerry Rodgers, and T.N. Srinivasan (eds.)", "Population, Food, and Rural Development", "Oxford University Press"],
+  [1988, "Ronald Lee, W. Brian Arthur, and Gerry Rodgers (eds.)", "Economics of Changing Age Distributions in Developed Countries", "Oxford University Press"],
+  [1987, "D. Gale Johnson and Ronald Lee (eds.)", "Population Growth and Economic Development: Issues and Evidence", "University of Wisconsin Press"],
+  [1983, "Rodolfo Bulatao and Ronald Lee (eds.)", "Determinants of Fertility in Developing Countries (2 vols.)", "Academic Press"],
+  [1978, "Ronald Lee", "Econometric Studies of Topics in Demographic History", "Arno Press"],
+  [1977, "Ronald Lee (ed.)", "Population Patterns in the Past", "Academic Press"],
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const scholar = t => "https://scholar.google.com/scholar?q=" + encodeURIComponent('"' + t + '" Lee');
+const cite = (au, y, t, v) =>
+  `${esc(au)} (${y}). <a class="t" href="${scholar(t)}" target="_blank" rel="noopener">${esc(t)}</a>. <span class="v">${esc(v)}</span>.`;
+
+function home(print) {
+  const counts = {};
+  PUBS.forEach(p => counts[p[0]] = (counts[p[0]] || 0) + 1);
+  return `
+    <h2>Research</h2>
+    <p class="lede">I am an economist and demographer. My research has ranged from the population history of pre-industrial England to the macroeconomics of population aging, with a common thread: how population dynamics and the economy shape each other over the life cycle and across generations. Each area below links to a list of related publications.</p>
+    <div class="areas">
+      ${AREAS.map(a => `
+        <a class="area" href="${print ? "#sec-" : "#/area/"}${a.id}">
+          <h3>${esc(a.name)}</h3>
+          <p>${esc(a.text)}</p>
+          <span class="more">Publications (${counts[a.id] || 0}) →</span>
+        </a>`).join("")}
+    </div>`;
+}
+
+function areaPage(id) {
+  const a = AREAS.find(x => x.id === id);
+  if (!a) return home();
+  const list = PUBS.filter(p => p[0] === id).sort((x, y) => y[1] - x[1]);
+  return `
+    <div class="crumb"><a href="#/">← All research areas</a></div>
+    <h2>${esc(a.name)}</h2>
+    <p class="lede">${esc(a.text)}</p>
+    <input class="filter" id="q" type="search" placeholder="Filter by title, coauthor, or journal…" aria-label="Filter publications">
+    <div class="count" id="cnt"></div>
+    <div id="list"></div>
+    <script type="application/json" id="data">${JSON.stringify(list).replace(/</g, "\\u003c")}<\/script>`;
+}
+
+function renderList(list, q) {
+  q = (q || "").toLowerCase().trim();
+  const shown = q ? list.filter(p => p.slice(1).join(" ").toLowerCase().includes(q)) : list;
+  document.getElementById("cnt").textContent = `${shown.length} of ${list.length} publications`;
+  let html = "", yr = null;
+  shown.forEach(([, y, au, t, v]) => {
+    if (y !== yr) { if (yr !== null) html += "</ul>"; html += `<div class="yr">${y}</div><ul class="pubs">`; yr = y; }
+    html += `<li>${cite(au, y, t, v)}</li>`;
+  });
+  if (yr !== null) html += "</ul>";
+  document.getElementById("list").innerHTML = html || "<p>No matches.</p>";
+}
+
+// Print view: front page, then one section per area, each starting on a new page.
+function printAll() {
+  return home(true) + AREAS.map(a => {
+    const list = PUBS.filter(p => p[0] === a.id).sort((x, y) => y[1] - x[1]);
+    let html = "", yr = null;
+    list.forEach(([, y, au, t, v]) => {
+      if (y !== yr) { if (yr !== null) html += "</ul>"; html += `<div class="yr">${y}</div><ul class="pubs">`; yr = y; }
+      html += `<li>${cite(au, y, t, v)}</li>`;
+    });
+    return `
+      <section class="pg" id="sec-${a.id}">
+        <h2>${esc(a.name)}</h2>
+        <p class="lede">${esc(a.text)}</p>
+        <div class="count">${list.length} publications</div>
+        ${html}</ul>
+      </section>`;
+  }).join("");
+}
+
+function books() {
+  return `
+    <h2>Books and Reports</h2>
+    <ul class="pubs">${BOOKS.map(([y, au, t, v]) => `<li>${cite(au, y, t, v)}</li>`).join("")}</ul>`;
+}
+
+function about() {
+  return `
+    <h2>About</h2>
+    <p>Ronald Lee is Professor of the Graduate School in Demography and Economics at the University of California, Berkeley, where he taught from 1979 and directed the Center for the Economics and Demography of Aging (1994–2013) and the demography training programs. He received a B.A. in philosophy from Reed College, an M.A. in demography from Berkeley, and a Ph.D. in economics from Harvard, followed by postdoctoral work at INED in Paris. Before Berkeley he taught economics at the University of Michigan. He was a Peace Corps volunteer in Ethiopia.</p>
+    <p>He is a member of the National Academy of Sciences and the American Philosophical Society, a Fellow of the American Academy of Arts and Sciences, and a Corresponding Fellow of the British Academy. He served as President of the Population Association of America and has received PAA's Mindel C. Sheps and Irene B. Taeuber awards, a Guggenheim Fellowship, three NIA MERIT awards, and an honorary doctorate from Lund University. With Andrew Mason he founded the National Transfer Accounts project.</p>
+    <div class="sidebox">
+      <strong>Contact</strong><br>
+      Department of Demography, University of California, Berkeley<br>
+      <a href="https://www.ntaccounts.org" target="_blank" rel="noopener">National Transfer Accounts</a> ·
+      <a href="https://scholar.google.com/scholar?q=author%3A%22Ronald+D+Lee%22+demography" target="_blank" rel="noopener">Google Scholar</a>
+    </div>`;
+}
+
+function route() {
+  const h = location.hash.replace(/^#/, "") || "/";
+  const view = document.getElementById("view");
+  let nav = "home";
+  if (h.startsWith("/area/")) {
+    view.innerHTML = areaPage(h.slice(6));
+    const d = document.getElementById("data");
+    if (d) {
+      const list = JSON.parse(d.textContent);
+      renderList(list, "");
+      document.getElementById("q").addEventListener("input", e => renderList(list, e.target.value));
+    }
+  } else if (h === "/print") { view.innerHTML = printAll(); }
+  else if (h === "/books") { view.innerHTML = books(); nav = "books"; }
+  else if (h === "/about") { view.innerHTML = about(); nav = "about"; }
+  else view.innerHTML = home();
+  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("on", a.dataset.nav === nav));
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
